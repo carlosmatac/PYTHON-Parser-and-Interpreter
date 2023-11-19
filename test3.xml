@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE program [
+<!ELEMENT program (tac+)>
+<!ELEMENT tac (dst?,src1?,src2?)>
+<!ELEMENT dst (#PCDATA)>
+<!ELEMENT src1 (#PCDATA)>
+<!ELEMENT src2 (#PCDATA)>
+<!ATTLIST program name CDATA #IMPLIED>
+<!ATTLIST tac opcode CDATA #REQUIRED>
+<!ATTLIST tac order CDATA #REQUIRED>
+<!ATTLIST dst type (integer|string|variable|label) #REQUIRED>
+<!ATTLIST src1 type (integer|string|variable) #REQUIRED>
+<!ATTLIST src2 type (integer|string|variable) #REQUIRED>
+<!ENTITY language "IPPeCode">
+<!ENTITY eol "&#xA;">
+<!ENTITY gt ">">
+<!ENTITY lt "<">
+]>
+<program name="Sum of two numbers">
+    <tac opcode="MOV" order="1">
+        <dst type="variable">a</dst>
+        <src1 type="integer">4</src1>
+    </tac>
+    <tac opcode="MOV" order="2">
+        <dst type="variable">b</dst>
+        <src1 type="integer">5</src1>
+    </tac>
+    <tac opcode="ADD" order="3">
+        <dst type="variable">resultado</dst>
+        <src1 type="variable">a</src1>
+        <src2 type="variable">b</src2>
+    </tac>
+    <tac opcode="PRINT" order="4">
+        <src1 type="variable">resultado</src1>
+    </tac>
+</program>

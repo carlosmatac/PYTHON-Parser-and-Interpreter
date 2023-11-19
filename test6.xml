@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE program [
+<!ELEMENT program (tac+)>
+<!ELEMENT tac (dst?,src1?,src2?)>
+<!ELEMENT dst (#PCDATA)>
+<!ELEMENT src1 (#PCDATA)>
+<!ELEMENT src2 (#PCDATA)>
+<!ATTLIST program name CDATA #IMPLIED>
+<!ATTLIST tac opcode CDATA #REQUIRED>
+<!ATTLIST tac order CDATA #REQUIRED>
+<!ATTLIST dst type (integer|string|variable|label) #REQUIRED>
+<!ATTLIST src1 type (integer|string|variable) #REQUIRED>
+<!ATTLIST src2 type (integer|string|variable) #REQUIRED>
+<!ENTITY language "IPPeCode">
+<!ENTITY eol "&#xA;">
+<!ENTITY gt ">">
+<!ENTITY lt "<">
+]>
+<program name="Comparation between num1 (3) and num2 (7)">
+    <tac opcode="MOV" order="1">
+        <dst type="variable">num1</dst>
+        <src1 type="integer">3</src1>
+    </tac>
+    <tac opcode="MOV" order="2">
+        <dst type="variable">num2</dst>
+        <src1 type="integer">7</src1>
+    </tac>
+    <tac opcode="JUMPIFLT" order="3">
+        <dst type="label">menor</dst>
+        <src1 type="variable">num1</src1>
+        <src2 type="variable">num2</src2>
+    </tac>
+    <tac opcode="PRINT" order="4">
+        <src1 type="string">num1 no es menor que num2</src1>
+    </tac>
+    <tac opcode="JUMP" order="5">
+        <dst type="label">fin</dst>
+    </tac>
+    <tac opcode="LABEL" order="6">
+        <dst type="label">menor</dst>
+    </tac>
+    <tac opcode="PRINT" order="7">
+        <src1 type="string">num1 is less than num2</src1>
+    </tac>
+    <tac opcode="LABEL" order="8">
+        <dst type="label">fin</dst>
+    </tac>
+</program>

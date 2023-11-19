@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE program [
+<!ELEMENT program (tac+)>
+<!ELEMENT tac (dst?,src1?,src2?)>
+<!ELEMENT dst (#PCDATA)>
+<!ELEMENT src1 (#PCDATA)>
+<!ELEMENT src2 (#PCDATA)>
+<!ATTLIST program name CDATA #IMPLIED>
+<!ATTLIST tac opcode CDATA #REQUIRED>
+<!ATTLIST tac order CDATA #REQUIRED>
+<!ATTLIST dst type (integer|string|variable|label) #REQUIRED>
+<!ATTLIST src1 type (integer|string|variable) #REQUIRED>
+<!ATTLIST src2 type (integer|string|variable) #REQUIRED>
+<!ENTITY language "IPPeCode">
+<!ENTITY eol "&#xA;">
+<!ENTITY gt ">">
+<!ENTITY lt "<">
+]>
+<program name="Read and writing of an integer and a string">
+    <tac opcode="PRINT" order="1">
+        <src1 type="string">Please, insert an integer:</src1>
+    </tac>
+    <tac opcode="READINT" order="2">
+        <dst type="variable">numero</dst>
+    </tac>
+    <tac opcode="PRINT" order="3">
+        <src1 type="string">The number is:</src1>
+    </tac>
+    <tac opcode="PRINT" order="4">
+        <src1 type="variable">numero</src1>
+    </tac>
+    <tac opcode="PRINT" order="5">
+        <src1 type="string">Please, insert a string:</src1>
+    </tac>
+    <tac opcode="READSTR" order="6">
+        <dst type="variable">texto</dst>
+    </tac>
+    <tac opcode="PRINT" order="7">
+        <src1 type="string">The string is:</src1>
+    </tac>
+    <tac opcode="PRINT" order="8">
+        <src1 type="variable">texto</src1>
+    </tac>
+</program>
